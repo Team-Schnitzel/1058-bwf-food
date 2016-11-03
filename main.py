@@ -19,19 +19,18 @@ def exit_handler():
 
 def executeOrder(person, foodItemIndex):
     print("{0:13} ordering {1:10} at {2}".format(person[0], foodItems[foodItemIndex], str(datetime.now())))
-    thread = threading.Thread(target=sendRequest)
+    thread = threading.Thread(target=sendRequest,args=[person[0],person[1],foodItemIds[foodItemIndex]])
     thread.start()
 
-    
-def sendRequest(person,foodItemId):
-    
-    #requestsSession = Requests.session()
-    #requestsSession.Post("URL", data={'usernameformdata': person[0],
-    #                               'usernameformdata': person[1],
-    #                               'usernameformdata': "Login"})
-    #requestsSession.Post("URL", data={})
-    #
-    ##Feedback/Logging (email,buzzer,logFile,...)
+def sendRequest(loginName,loginPassword,foodItemId):
+    print("{0:13} ordering {1:10} at {2}".format(loginName, foodItemId, str(datetime.now())))
+        #requestsSession = Requests.session()
+        #requestsSession.Post("URL", data={'usernameformdata': person[0],
+        #                               'usernameformdata': person[1],
+        #                               'usernameformdata': "Login"})
+        #requestsSession.Post("URL", data={})
+        #
+        ##Feedback/Logging (email,buzzer,logFile,...)
 
 def pinTriggered(pin):
     person = None
