@@ -54,7 +54,7 @@ atexit.register(exit_handler)
 GPIO.setmode(GPIO.BOARD)
 for pin in gpioPins:
     GPIO.setup(pin, GPIO.IN)
-debounceValue = 100
+debounceValue = 1000
 while True:
     for pin in gpioPins:
         if (GPIO.input(pin)):
