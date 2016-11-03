@@ -8,5 +8,8 @@
     "Username":"Vampirekid",
     "Password":"3",
     "Email":"4"
-    }
+    },
+  "gpioPins":["7", "11", "15", "12", "16", "22"],
+  "foodItemIdes":["1111","2222","3333"],
+  "foodItemNames":["Bicky","PartyMix","Ice Tea"]
 }
