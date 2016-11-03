@@ -59,7 +59,7 @@ while True:
     for pin in gpioPins:
         if (GPIO.input(pin)):
             gpioLastPinState[gpioPins.index(pin)] += 1
-            print("{0:3} + 1 for pin: {1}".format(str(gpioLastPinState[gpioPins.index(pin)]),str(pin)))
+            #print("{0:3} + 1 for pin: {1}".format(str(gpioLastPinState[gpioPins.index(pin)]),str(pin)))
             if gpioLastPinState[gpioPins.index(pin)] == 100:
                 pinTriggered(pin)
         else:
