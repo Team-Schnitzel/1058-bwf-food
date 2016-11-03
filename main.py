@@ -19,7 +19,7 @@ def exit_handler():
 
 def executeOrder(person, foodItemIndex):
     print("{0:13} ordering {1:10} at {2}".format(person[0], foodItems[foodItemIndex], str(datetime.now())))
-    thread = threading.Thread(target=receive_thread)
+    thread = threading.Thread(target=sendRequest)
     thread.start()
 
     
