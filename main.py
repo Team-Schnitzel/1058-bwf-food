@@ -17,7 +17,7 @@ vampire = ["VampireKid", "password", datetime.now()-timedelta(seconds=timeOut),0
 def exit_handler():
     GPIO.cleanup()
 
-def ExecuteOrder(person,foodItemIndex):
+def executeOrder(person,foodItemIndex):
     print("{0:13} ordered {1:10} at {2}".format(person[0], foodItems[foodItemIndex], str(datetime.now())))
     #requestsSession = Requests.session()
     #requestsSession.Post("URL", data={'usernameformdata': person[0],
@@ -27,7 +27,7 @@ def ExecuteOrder(person,foodItemIndex):
     #
     ##Feedback/Logging (email,buzzer,logFile,...)
 
-def PinTriggered(pin):
+def pinTriggered(pin):
     person = None
     foodItemIndex = None
     if pin in looneyPins:
@@ -40,7 +40,7 @@ def PinTriggered(pin):
     if (not(foodItemIndex == person[3])) or (person[2] < datetime.now()-timedelta(seconds=timeOut)):
         person[2] = datetime.now()
         person[3] = foodItemIndex
-        ExecuteOrder(person, foodItemIndex)
+        executeOrder(person, foodItemIndex)
 
 #start
 atexit.register(exit_handler)
@@ -53,9 +53,9 @@ while True:
         if (GPIO.input(pin)):
             gpioLastPinState[gpioPins.index(pin)] += 1
             if gpioLastPinState[gpioPins.index(pin)] >= 5:
-                PinTriggered(pin)
+                pinTriggered(pin)
         else:
             gpioLastPinState[gpioPins.index(pin)] = 0
-        time.sleep(0.2)
+        time.sleep(0.1)
 
 
