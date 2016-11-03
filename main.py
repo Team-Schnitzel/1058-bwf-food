@@ -3,11 +3,12 @@ import RPi.GPIO as GPIO
 import requests, smtplib, atexit, time, threading, json
 
 #global vars
+settings = json.load(open('settings.JSON'))
+print(settings["Looney"]["Username"])
 gpioPins = [7, 11, 15, 12, 16, 22]
 gpioLastPinState = [0,0,0,0,0,0]
 looneyPins = [gpioPins[0], gpioPins[1], gpioPins[2]]
 vampirePins = [gpioPins[3], gpioPins[4], gpioPins[5]]
-
 foodItemIds = [1111,2222,3333]
 foodItems = ["Bicky","PartyMix","Ice Tea"]
 looney = ["looney", "password"]
