@@ -19,12 +19,11 @@ def exit_handler():
     GPIO.cleanup()
 
 def executeOrder(person, foodItemIndex):
-    print("{0:13} ordering {1:10} at {2}".format(person[0], foodItems[foodItemIndex], str(datetime.now())))
+    print("placing order 1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIndex], person[0], str(datetime.now())))
     thread = threading.Thread(target=sendRequest,args=[person[0],person[1],foodItemIds[foodItemIndex]])
     thread.start()
 
 def sendRequest(loginName,loginPassword,foodItemId):
-    time.sleep(20)
         #requestsSession = Requests.session()
         #requestsSession.Post("URL", data={'usernameformdata': person[0],
         #                               'usernameformdata': person[1],
@@ -32,7 +31,7 @@ def sendRequest(loginName,loginPassword,foodItemId):
         #requestsSession.Post("URL", data={})
         #
         ##Feedback/Logging (email,buzzer,logFile,...)
-    print("Order completed 1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],loginName,str(datetime.now())))
+    print("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],loginName,str(datetime.now())))
 
 def pinTriggered(pin):
     person = None
