@@ -4,15 +4,14 @@ import requests, smtplib, atexit, time, threading, json
 
 #global vars
 settings = json.load(open('settings.JSON'))
-print(settings["Looney"]["Username"])
-gpioPins = [7, 11, 15, 12, 16, 22]
+gpioPins = [int(settings["gpioPins"][0]), int(settings["gpioPins"][1]), int(settings["gpioPins"][2]), int(settings["gpioPins"][3]), int(settings["gpioPins"][4]),int(settings["gpioPins"][5])]
 gpioLastPinState = [0,0,0,0,0,0]
 looneyPins = [gpioPins[0], gpioPins[1], gpioPins[2]]
 vampirePins = [gpioPins[3], gpioPins[4], gpioPins[5]]
-foodItemIds = [1111,2222,3333]
-foodItems = ["Bicky","PartyMix","Ice Tea"]
-looney = ["looney", "password"]
-vampire = ["VampireKid", "password"]
+foodItemIds = [int(settings["foodItemIdes"][0]),int(settings["foodItemIdes"][1]),int(settings["foodItemIdes"][2])]
+foodItems = [settings["foodItemNames"][0],settings["foodItemNames"][1],settings["foodItemNames"][2]]
+looney = [settings["Looney"]["Username"], settings["Looney"]["Password"],settings["Looney"]["Email"]]
+vampire = [settings["VampireKid"]["Username"], settings["VampireKid"]["Password"],settings["VampireKid"]["Email"]]
 
 #fuctions
 def exit_handler():
