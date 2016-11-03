@@ -32,7 +32,7 @@ def sendRequest(loginName,loginPassword,foodItemId):
         #requestsSession.Post("URL", data={})
         #
         ##Feedback/Logging (email,buzzer,logFile,...)
-    print("{0:13} ordering {1:10} at {2}".format(loginName, foodItems[foodItemIds.index(foodItemId)], str(datetime.now())))
+    print("Order of ""{1:10}"" For {0:10} completed at {2}".format(loginName, foodItems[foodItemIds.index(foodItemId)], str(datetime.now())))
 
 def pinTriggered(pin):
     person = None
