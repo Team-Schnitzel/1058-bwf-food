@@ -52,9 +52,8 @@ while True:
     for pin in gpioPins:
         if (GPIO.input(pin)):
             gpioLastPinState[gpioPins.index(pin)] += 1
-            if gpioLastPinState[gpioPins.index(pin)] == 5:
+            if gpioLastPinState[gpioPins.index(pin)] == 100:
                 pinTriggered(pin)
         else:
             gpioLastPinState[gpioPins.index(pin)] = 0
-        time.sleep(0.01)
 
