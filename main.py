@@ -1,6 +1,7 @@
 from datetime import datetime, timedelta
 import RPi.GPIO as GPIO
 import requests, smtplib, atexit, time
+import threading
 
 #global vars
 gpioPins = [7, 11, 15, 12, 16, 22]
