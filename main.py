@@ -7,11 +7,11 @@ gpioPins = [7, 11, 15, 12, 16, 22]
 gpioLastPinState = [0,0,0,0,0,0]
 looneyPins = [gpioPins[0], gpioPins[1], gpioPins[2]]
 vampirePins = [gpioPins[3], gpioPins[4], gpioPins[5]]
+
 foodItemIds = [1111,2222,3333]
 foodItems = ["Bicky","PartyMix","Ice Tea"]
-timeOut = 0.3
-looney = ["looney", "password", datetime.now()-timedelta(seconds=timeOut),0]
-vampire = ["VampireKid", "password", datetime.now()-timedelta(seconds=timeOut),0]
+looney = ["looney", "password"]
+vampire = ["VampireKid", "password"]
 
 #fuctions
 def exit_handler():
@@ -29,7 +29,6 @@ def sendRequest(loginName,loginPassword,foodItemId):
         #                               'usernameformdata': "Login"})
         #requestsSession.Post("URL", data={})
         #
-        ##Feedback/Logging (email,buzzer,logFile,...)
     print("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],loginName,str(datetime.now())))
 
 def pinTriggered(pin):
@@ -43,8 +42,6 @@ def pinTriggered(pin):
         foodItemIndex = vampirePins.index(pin)
 
     #if (not(foodItemIndex == person[3])) or (person[2] < datetime.now()-timedelta(seconds=timeOut)):
-    person[2] = datetime.now()
-    person[3] = foodItemIndex
     executeOrder(person, foodItemIndex)
 
 #start
