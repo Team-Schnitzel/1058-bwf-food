@@ -13,7 +13,7 @@ timeOut = 0.3
 looney = ["looney", "password", datetime.now()-timedelta(seconds=timeOut),0]
 vampire = ["VampireKid", "password", datetime.now()-timedelta(seconds=timeOut),0]
 
-#methods
+#fuctions
 def exit_handler():
     GPIO.cleanup()
 
@@ -52,11 +52,9 @@ while True:
     for pin in gpioPins:
         if (GPIO.input(pin)):
             gpioLastPinState[gpioPins.index(pin)] += 1
-            print(str(pin) + "up +1")
             if gpioLastPinState[gpioPins.index(pin)] == 5:
                 pinTriggered(pin)
         else:
             gpioLastPinState[gpioPins.index(pin)] = 0
-            print(str(pin) + "down =0")
         time.sleep(0.01)
 
