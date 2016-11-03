@@ -24,7 +24,7 @@ def executeOrder(person, foodItemIndex):
     thread.start()
 
 def sendRequest(loginName,loginPassword,foodItemId):
-    
+    time.sleep(20)
         #requestsSession = Requests.session()
         #requestsSession.Post("URL", data={'usernameformdata': person[0],
         #                               'usernameformdata': person[1],
@@ -32,7 +32,7 @@ def sendRequest(loginName,loginPassword,foodItemId):
         #requestsSession.Post("URL", data={})
         #
         ##Feedback/Logging (email,buzzer,logFile,...)
-    print("Order completed ( 1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],loginName,str(datetime.now())))
+    print("Order completed 1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],loginName,str(datetime.now())))
 
 def pinTriggered(pin):
     person = None
