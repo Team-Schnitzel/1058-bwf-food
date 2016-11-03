@@ -1,7 +1,6 @@
 from datetime import datetime, timedelta
 import RPi.GPIO as GPIO
-import requests, smtplib, atexit, time
-import threading
+import requests, smtplib, atexit, time, threading, json
 
 #global vars
 gpioPins = [7, 11, 15, 12, 16, 22]
@@ -43,10 +42,10 @@ def pinTriggered(pin):
         person = vampire
         foodItemIndex = vampirePins.index(pin)
 
-    if (not(foodItemIndex == person[3])) or (person[2] < datetime.now()-timedelta(seconds=timeOut)):
-        person[2] = datetime.now()
-        person[3] = foodItemIndex
-        executeOrder(person, foodItemIndex)
+    #if (not(foodItemIndex == person[3])) or (person[2] < datetime.now()-timedelta(seconds=timeOut)):
+    person[2] = datetime.now()
+    person[3] = foodItemIndex
+    executeOrder(person, foodItemIndex)
 
 #start
 atexit.register(exit_handler)
