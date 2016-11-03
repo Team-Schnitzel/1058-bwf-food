@@ -17,8 +17,14 @@ vampire = ["VampireKid", "password", datetime.now()-timedelta(seconds=timeOut),0
 def exit_handler():
     GPIO.cleanup()
 
-def executeOrder(person,foodItemIndex):
-    print("{0:13} ordered {1:10} at {2}".format(person[0], foodItems[foodItemIndex], str(datetime.now())))
+def executeOrder(person, foodItemIndex):
+    print("{0:13} ordering {1:10} at {2}".format(person[0], foodItems[foodItemIndex], str(datetime.now())))
+    thread = threading.Thread(target=self.receive_thread)
+    thread.start()
+
+    
+def sendRequest(person,foodItemId):
+    
     #requestsSession = Requests.session()
     #requestsSession.Post("URL", data={'usernameformdata': person[0],
     #                               'usernameformdata': person[1],
