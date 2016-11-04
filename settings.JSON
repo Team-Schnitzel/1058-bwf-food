@@ -11,5 +11,10 @@
     },
   "gpioPins":["7", "11", "15", "12", "16", "22"],
   "foodItemIdes":["1111","2222","3333"],
-  "foodItemNames":["Bicky","PartyMix","Ice Tea"]
+  "foodItemNames":["Bicky","PartyMix","Ice Tea"],
+  "smtp":{
+    "Server":"smtp.zoho.com",
+    "Port ":"465",
+    "Email":"",
+    "Password":""
 }
