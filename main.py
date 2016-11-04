@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 import RPi.GPIO as GPIO
-import requests, smtplib, atexit, time, threading, json
+import requests, smtplib, atexit, time, threading, json, bs4
 
 #global vars
 settings = json.load(open('settings.JSON'))
@@ -44,7 +44,7 @@ def sendRequest(person,foodItemId):
         postData = {"order_item": str(item), "order_item_add": "Voeg Toe"}
         requestsSession.post(PostUrl, headers=headers, data=postData, verify=False)
     postData = {"opmerkingen": "Order Placed by the FoM Network Team Button stuff something IoT device... https://github.com/Team-Schnitzel/1058-bwf-food", "user_order_start_print": "Plaats Bestelling"}
-    requestsSession.post(PostUrl, headers=headers, data=postData, verify=False)
+    order_response = requestsSession.post(PostUrl, headers=headers, data=postData, verify=False).content
     
     logToFile(person,foodItemId)
     print("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())))
