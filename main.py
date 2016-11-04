@@ -21,8 +21,8 @@ def exit_handler():
 
 def executeOrder(person, foodItemIndex):
     print("placing order 1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIndex], person[0], str(datetime.now())))
-    thread = threading.Thread(target=sendRequest,args=[person,foodItemIds[foodItemIndex]])
-    thread.start()
+    #thread = threading.Thread(target=sendRequest,args=[person,foodItemIds[foodItemIndex]])
+    #thread.start()
 
 #def sendMail(person,foodItemId):
 #    if "@" in person[2]:
@@ -40,8 +40,10 @@ def sendRequest(person,foodItemId):
     requestsSession = Requests.session()
     postData = {"username": person[0], "password": person[1], "login": "Aanmelden"}
     requestsSession.Post(PostUrl, headers=headers, data=postData)
+    time.sleep(1)
     postData = {"order_item":str(foodItemId), "order_item_add": "Voeg Toe"}
     requestsSession.Post(PostUrl, headers=headers, data=postData)
+    time.sleep(1)
     PostData = {"opmerkingen":"", "user_order_start_print": "Plaats Bestelling"}
     requestsSession.Post(PostUrl, headers=headers, data=postData)
     
@@ -57,7 +59,6 @@ def pinTriggered(pin):
     elif pin in vampirePins:
         person = vampire
         foodItemIndex = vampirePins.index(pin)
-        
     executeOrder(person, foodItemIndex)
 
 #start
