@@ -35,12 +35,15 @@ def logToFile(person,foodItemId):
         file.write("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())) + "\n")
     
 def sendRequest(person,foodItemId):
-        #requestsSession = Requests.session()
-        #requestsSession.Post("URL", data={'usernameformdata': person[0],
-        #                               'usernameformdata': person[1],
-        #                               'usernameformdata': "Login"})
-        #requestsSession.Post("URL", data={})
-        #
+    requestsSession = Requests.session()
+    requestsSession.Post("https://pos.bwf.be/", data={"username": person[0],
+                                       "password": person[1],
+                                       "login": "Aanmelden"})
+    requestsSession.Post("pos.bwf.be", data={"order_item":str(foodItemId),
+                                             "order_item_add": "Voeg Toe"})
+    requestsSession.Post("pos.bwf.be", data={"opmerkingen":"",
+                                             "user_order_start_print": "Plaats Bestelling"})
+    
     logToFile(person,foodItemId)
     print("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())))
 
