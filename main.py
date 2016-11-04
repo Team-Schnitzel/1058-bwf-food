@@ -22,13 +22,17 @@ def executeOrder(person, foodItemIndex):
     thread = threading.Thread(target=sendRequest,args=[person,foodItemIds[foodItemIndex]])
     thread.start()
 
-def sendMail(person,foodItemId):
-    if "@" in person[2]:
-        msg = "Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now()))
-        server = smtplib.SMTP_SSL(settings["smtp"]["Server"],int(settings["smtp"]["Port"]))
-        server.login(settings["smtp"]["Email"],settings["smtp"]["Password"])
-        server.sendmail(settings["smtp"]["Email"], person[2], str(msg))
-        server.quit()
+#def sendMail(person,foodItemId):
+#    if "@" in person[2]:
+#        msg = "Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now()))
+#        server = smtplib.SMTP_SSL(settings["smtp"]["Server"],int(settings["smtp"]["Port"]))
+#        server.login(settings["smtp"]["Email"],settings["smtp"]["Password"])
+#        server.sendmail(settings["smtp"]["Email"], person[2], str(msg))
+#        server.quit()
+    
+def logToFile(person,foodItemId):
+    with open("Log.txt", "a") as file:
+        file.write("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())))
     
 def sendRequest(person,foodItemId):
         #requestsSession = Requests.session()
@@ -37,7 +41,7 @@ def sendRequest(person,foodItemId):
         #                               'usernameformdata': "Login"})
         #requestsSession.Post("URL", data={})
         #
-    sendMail(person,foodItemId)
+    logToFile(person,foodItemId)
     print("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())))
 
 def pinTriggered(pin):
