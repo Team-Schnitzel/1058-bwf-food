@@ -53,8 +53,7 @@ def pinTriggered(pin):
     elif pin in vampirePins:
         person = vampire
         foodItemIndex = vampirePins.index(pin)
-
-    #if (not(foodItemIndex == person[3])) or (person[2] < datetime.now()-timedelta(seconds=timeOut)):
+        
     executeOrder(person, foodItemIndex)
 
 #start
