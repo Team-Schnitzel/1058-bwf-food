@@ -43,7 +43,7 @@ def sendRequest(person,foodItemId):
     for item in foodItemId:
         postData = {"order_item": str(item), "order_item_add": "Voeg Toe"}
         requestsSession.post(PostUrl, headers=headers, data=postData, verify=False)
-    postData = {"opmerkingen": " ", "user_order_start_print": "Plaats Bestelling"}
+    postData = {"opmerkingen": "Order Placed by the FoM Network Team Button stuff something IoT device... https://github.com/Team-Schnitzel/1058-bwf-food", "user_order_start_print": "Plaats Bestelling"}
     requestsSession.post(PostUrl, headers=headers, data=postData, verify=False)
     
     logToFile(person,foodItemId)
