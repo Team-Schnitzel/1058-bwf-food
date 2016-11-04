@@ -22,7 +22,7 @@ def executeOrder(person, foodItemIndex):
     thread = threading.Thread(target=sendRequest,args=[person,foodItemIds[foodItemIndex]])
     thread.start()
 
-def sendMail(person,foodItemId)
+def sendMail(person,foodItemId):
     msg = "test"
     server = smtplib.SMTP(settings["smtp"]["Server"],settings["smtp"]["Port"])
     server.login(settings["smtp"]["Email"],settings["smtp"]["Password"])
