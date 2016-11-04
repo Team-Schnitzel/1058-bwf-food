@@ -14,7 +14,7 @@
   "foodItemNames":["Bicky","PartyMix","Ice Tea"],
   "smtp":{
     "Server":"smtp.zoho.com",
-    "Port ":"465",
+    "Port":"465",
     "Email":"",
     "Password":""
   }
