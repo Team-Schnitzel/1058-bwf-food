@@ -8,8 +8,8 @@ gpioPins = [int(x) for x in settings["gpioPins"]]
 gpioLastPinState = [0,0,0,0,0,0]
 looneyPins = [gpioPins[0], gpioPins[1], gpioPins[2]]
 vampirePins = [gpioPins[3], gpioPins[4], gpioPins[5]]
-foodItemIds = [int(settings["foodItemIdes"][0]),int(settings["foodItemIdes"][1]),int(settings["foodItemIdes"][2])]
-foodItems = [settings["foodItemNames"][0],settings["foodItemNames"][1],settings["foodItemNames"][2]]
+foodItemIds = [int(x) for x in settings["foodItemIdes"]]
+foodItems = settings["foodItemNames"]
 looney = [settings["Looney"]["Username"], settings["Looney"]["Password"],settings["Looney"]["Email"]]
 vampire = [settings["VampireKid"]["Username"], settings["VampireKid"]["Password"],settings["VampireKid"]["Email"]]
 
@@ -19,17 +19,25 @@ def exit_handler():
 
 def executeOrder(person, foodItemIndex):
     print("placing order 1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIndex], person[0], str(datetime.now())))
-    thread = threading.Thread(target=sendRequest,args=[person[0],person[1],foodItemIds[foodItemIndex]])
+    thread = threading.Thread(target=sendRequest,args=[person,foodItemIds[foodItemIndex]])
     thread.start()
 
-def sendRequest(loginName,loginPassword,foodItemId):
+def sendMail(person,foodItemId)
+    msg = "test"
+    server = smtplib.SMTP(settings["smtp"]["Server"],settings["smtp"]["Port"])
+    server.login(settings["smtp"]["Email"],settings["smtp"]["Password"])
+    server.sendmail(settings["smtp"]["Email"], person[3], msg)
+    server.quit()
+    
+def sendRequest(person,foodItemId):
         #requestsSession = Requests.session()
         #requestsSession.Post("URL", data={'usernameformdata': person[0],
         #                               'usernameformdata': person[1],
         #                               'usernameformdata': "Login"})
         #requestsSession.Post("URL", data={})
         #
-    print("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],loginName,str(datetime.now())))
+    sendMail(loginName,loginPassword,foodItemId)
+    print("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())))
 
 def pinTriggered(pin):
     person = None
