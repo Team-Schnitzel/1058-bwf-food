@@ -32,7 +32,7 @@ def executeOrder(person, foodItemIndex):
     
 def logToFile(person,foodItemId):
     with open("Log.txt", "a") as file:
-        file.write("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())) & "\n")
+        file.write("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())) + "\n")
     
 def sendRequest(person,foodItemId):
         #requestsSession = Requests.session()
