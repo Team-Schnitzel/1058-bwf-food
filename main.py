@@ -23,11 +23,12 @@ def executeOrder(person, foodItemIndex):
     thread.start()
 
 def sendMail(person,foodItemId):
-    msg = "test"
-    server = smtplib.SMTP_SSL(settings["smtp"]["Server"],int(settings["smtp"]["Port"]))
-    server.login(settings["smtp"]["Email"],settings["smtp"]["Password"])
-    server.sendmail(settings["smtp"]["Email"], person[2], msg)
-    server.quit()
+    if "@" in person[2]:
+        msg = "Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now()))
+        server = smtplib.SMTP_SSL(settings["smtp"]["Server"],int(settings["smtp"]["Port"]))
+        server.login(settings["smtp"]["Email"],settings["smtp"]["Password"])
+        server.sendmail(settings["smtp"]["Email"], person[2], msg)
+        server.quit()
     
 def sendRequest(person,foodItemId):
         #requestsSession = Requests.session()
