@@ -37,15 +37,15 @@ def logToFile(person,foodItemId):
         file.write("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())) + "\n")
     
 def sendRequest(person,foodItemId):
-    requestsSession = Requests.session()
+    requestsSession = requests.session()
     postData = {"username": person[0], "password": person[1], "login": "Aanmelden"}
-    requestsSession.Post(PostUrl, headers=headers, data=postData)
+    requestsSession.post(PostUrl, headers=headers, data=postData)
     time.sleep(1)
     postData = {"order_item":str(28), "order_item_add": "Voeg Toe"}
-    requestsSession.Post(PostUrl, headers=headers, data=postData)
+    requestsSession.post(PostUrl, headers=headers, data=postData)
     time.sleep(1)
     PostData = {"opmerkingen":"", "user_order_start_print": "Plaats Bestelling"}
-    requestsSession.Post(PostUrl, headers=headers, data=postData)
+    requestsSession.post(PostUrl, headers=headers, data=postData)
     
     logToFile(person,foodItemId)
     print("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())))
@@ -67,6 +67,7 @@ GPIO.setmode(GPIO.BOARD)
 for pin in gpioPins:
     GPIO.setup(pin, GPIO.IN)
 debounceValue = 100
+print("running")
 while True:
     for pin in gpioPins:
         if (GPIO.input(pin)):
