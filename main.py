@@ -12,6 +12,8 @@ foodItemIds = [int(x) for x in settings["foodItemIdes"]]
 foodItems = settings["foodItemNames"]
 looney = [settings["Looney"]["Username"], settings["Looney"]["Password"],settings["Looney"]["Email"]]
 vampire = [settings["VampireKid"]["Username"], settings["VampireKid"]["Password"],settings["VampireKid"]["Email"]]
+headers = {'content-type': 'application/x-www-form-urlencoded'}
+PostUrl = "https://pos.bwf.be/"
 
 #fuctions
 def exit_handler():
@@ -36,13 +38,12 @@ def logToFile(person,foodItemId):
     
 def sendRequest(person,foodItemId):
     requestsSession = Requests.session()
-    requestsSession.Post("https://pos.bwf.be/", data={"username": person[0],
-                                       "password": person[1],
-                                       "login": "Aanmelden"})
-    requestsSession.Post("pos.bwf.be", data={"order_item":str(foodItemId),
-                                             "order_item_add": "Voeg Toe"})
-    requestsSession.Post("pos.bwf.be", data={"opmerkingen":"",
-                                             "user_order_start_print": "Plaats Bestelling"})
+    postData = {"username": person[0], "password": person[1], "login": "Aanmelden"}
+    requestsSession.Post(PostUrl, headers=headers, data=postData)
+    postData = {"order_item":str(foodItemId), "order_item_add": "Voeg Toe"}
+    requestsSession.Post(PostUrl, headers=headers, data=postData)
+    PostData = {"opmerkingen":"", "user_order_start_print": "Plaats Bestelling"}
+    requestsSession.Post(PostUrl, headers=headers, data=postData)
     
     logToFile(person,foodItemId)
     print("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())))
