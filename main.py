@@ -40,6 +40,7 @@ def sendRequest(person,foodItemId):
     requestsSession = requests.session()
     postData = {"username": person[0], "password": person[1], "login": "Aanmelden"}
     requestsSession.post(PostUrl, headers=headers, data=postData)
+    print('error')
     time.sleep(1)
     postData = {"order_item":str(28), "order_item_add": "Voeg Toe"}
     requestsSession.post(PostUrl, headers=headers, data=postData)
