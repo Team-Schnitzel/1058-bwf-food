@@ -36,7 +36,7 @@ def sendRequest(person,foodItemId):
         #                               'usernameformdata': "Login"})
         #requestsSession.Post("URL", data={})
         #
-    sendMail(loginName,loginPassword,foodItemId)
+    sendMail(person,foodItemId)
     print("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())))
 
 def pinTriggered(pin):
