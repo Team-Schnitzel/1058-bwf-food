@@ -4,11 +4,11 @@ import requests, smtplib, atexit, time, threading, json
 
 #global vars
 settings = json.load(open('settings.JSON'))
-gpioPins = [for x in settings["gpioPins"]]
+gpioPins = [int(x) for x in settings["gpioPins"]]
 gpioLastPinState = [0,0,0,0,0,0]
 looneyPins = [gpioPins[0], gpioPins[1], gpioPins[2]]
 vampirePins = [gpioPins[3], gpioPins[4], gpioPins[5]]
-foodItemIds = [int(x) for x in settings["foodItemIdes"]]
+foodItemIds = [x for x in settings["foodItemIdes"]]
 foodItems = settings["foodItemNames"]
 looney = [settings["Looney"]["Username"], settings["Looney"]["Password"],settings["Looney"]["Email"]]
 vampire = [settings["VampireKid"]["Username"], settings["VampireKid"]["Password"],settings["VampireKid"]["Email"]]
