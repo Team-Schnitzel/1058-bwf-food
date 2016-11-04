@@ -66,7 +66,7 @@ atexit.register(exit_handler)
 GPIO.setmode(GPIO.BOARD)
 for pin in gpioPins:
     GPIO.setup(pin, GPIO.IN)
-debounceValue = 200
+debounceValue = 100
 while True:
     for pin in gpioPins:
         if (GPIO.input(pin)):
@@ -75,10 +75,5 @@ while True:
             if gpioLastPinState[gpioPins.index(pin)] == debounceValue:
                 pinTriggered(pin)
         else:
-            if gpioLastPinState[gpioPins.index(pin)] > debounceValue:
-                gpioLastPinState[gpioPins.index(pin)] = -debounceValue
-            elif gpioLastPinState[gpioPins.index(pin)] < 0:
-                gpioLastPinState[gpioPins.index(pin)] += 1
-            else:
-                gpioLastPinState[gpioPins.index(pin)] = 0
+            gpioLastPinState[gpioPins.index(pin)] = 0
 
