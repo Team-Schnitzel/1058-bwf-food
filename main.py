@@ -18,7 +18,7 @@ def exit_handler():
     GPIO.cleanup()
 
 def executeOrder(person, foodItemIndex):
-    print("placing order 1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIndex], person[0], str(datetime.now())))
+    print("placing order 1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIndex], person[0], str(datetime.now())) & "\n")
     thread = threading.Thread(target=sendRequest,args=[person,foodItemIds[foodItemIndex]])
     thread.start()
 
