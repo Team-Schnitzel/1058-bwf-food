@@ -1,13 +1,13 @@
 {
   "Looney":{
     "Username":"Looney",
-    "Password":"1",
-    "Email":"2"
+    "Password":"",
+    "Email":""
     },
   "VampireKid":{
     "Username":"Vampirekid",
-    "Password":"3",
-    "Email":"4"
+    "Password":"",
+    "Email":""
     },
   "gpioPins":["7", "11", "15", "12", "16", "22"],
   "foodItemIdes":["1111","2222","3333"],
