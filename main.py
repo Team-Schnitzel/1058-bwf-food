@@ -24,7 +24,7 @@ def executeOrder(person, foodItemIndex):
 
 def sendMail(person,foodItemId):
     msg = "test"
-    server = smtplib.SMTP(settings["smtp"]["Server"],settings["smtp"]["Port"])
+    server = smtplib.SMTP_SSL(settings["smtp"]["Server"],int(settings["smtp"]["Port"]))
     server.login(settings["smtp"]["Email"],settings["smtp"]["Password"])
     server.sendmail(settings["smtp"]["Email"], person[3], msg)
     server.quit()
