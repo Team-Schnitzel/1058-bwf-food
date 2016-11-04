@@ -49,7 +49,7 @@ def sendRequest(person,foodItemId):
 
     logToFile(person,foodItemId)
     print("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())))
-    print(person[0] + "now has " + remaining_credits + " remaining")
+    print(person[0] + " now has " + remaining_credits + " remaining")
 
 def pinTriggered(pin):
     person = None
