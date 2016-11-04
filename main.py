@@ -38,14 +38,14 @@ def logToFile(person,foodItemId):
     
 def sendRequest(person,foodItemId):
     requestsSession = requests.session()
-    postData = {"username": person[0], "password": person[1], "login": "Aanmelden"}
-    requestsSession.post(PostUrl, headers=headers, data=postData, verify=False)
+    postData1 = {"username": person[0], "password": person[1], "login": "Aanmelden"}
+    requestsSession.post(PostUrl, data=postData1, verify=False)
     time.sleep(1)
-    postData = {"order_item":str(28), "order_item_add": "Voeg Toe"}
-    requestsSession.post(PostUrl, headers=headers, data=postData, verify=False)
+    postData2 = {"order_item": str(16), "order_item_add": "Voeg Toe"}
+    requestsSession.post(PostUrl, data=postData2, verify=False)
     time.sleep(1)
-    PostData = {"opmerkingen":"", "user_order_start_print": "Plaats Bestelling"}
-    requestsSession.post(PostUrl, headers=headers, data=postData, verify=False)
+    PostData3 = {"opmerkingen": " ", "user_order_start_print": "Plaats Bestelling"}
+    requestsSession.post(PostUrl, data=postData3, verify=False)
     
     logToFile(person,foodItemId)
     print("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())))
