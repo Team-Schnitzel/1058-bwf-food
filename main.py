@@ -31,11 +31,11 @@ def executeOrder(person, foodItemIndex):
 #        server.login(settings["smtp"]["Email"],settings["smtp"]["Password"])
 #        server.sendmail(settings["smtp"]["Email"], person[2], str(msg))
 #        server.quit()
-    
+
 def logToFile(person,foodItemId):
     with open("Log.txt", "a") as file:
         file.write("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())) + "\n")
-    
+
 def sendRequest(person,foodItemId):
     requestsSession = requests.session()
     postData = {"username": person[0], "password": person[1], "login": "Aanmelden"}
@@ -45,9 +45,11 @@ def sendRequest(person,foodItemId):
         requestsSession.post(PostUrl, headers=headers, data=postData, verify=False)
     postData = {"opmerkingen": "Order Placed by the FoM Network Team Button stuff something IoT device... https://github.com/Team-Schnitzel/1058-bwf-food", "user_order_start_print": "Plaats Bestelling"}
     order_response = requestsSession.post(PostUrl, headers=headers, data=postData, verify=False).content
-    
+    remaining_credits = bs4.BeautifulSoup(order_response, 'html.parser').find('div', {'id': 'account'}).find('span').text
+
     logToFile(person,foodItemId)
     print("Order placed  1x {0:10} for {1:10} at {2}".format(foodItems[foodItemIds.index(foodItemId)],person[0],str(datetime.now())))
+    print(person[0] + "now has " + remaining_credits + " remaining")
 
 def pinTriggered(pin):
     person = None
@@ -76,4 +78,3 @@ while True:
                 pinTriggered(pin)
         else:
             gpioLastPinState[gpioPins.index(pin)] = 0
-
