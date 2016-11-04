@@ -41,7 +41,7 @@ def sendRequest(person,foodItemId):
     postData = {"username": person[0], "password": person[1], "login": "Aanmelden"}
     requestsSession.post(PostUrl, headers=headers, data=postData, verify=False)
     time.sleep(1)
-    postData = {"order_item":str(foodItemId), "order_item_add": "Voeg Toe"}
+    postData = {"order_item":str(16), "order_item_add": "Voeg Toe"}
     requestsSession.post(PostUrl, headers=headers, data=postData, verify=False)
     time.sleep(1)
     PostData = {"opmerkingen":"", "user_order_start_print": "Plaats Bestelling"}
