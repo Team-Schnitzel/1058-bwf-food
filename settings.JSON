@@ -3,13 +3,13 @@
 		"Username": "Looney",
 		"Password": "",
 		"gpioPins": ["7", "11", "15"],
-		"foodItemIdes": [["16"], ["14", "28"], ["17"]],
+		"foodItemIds": [["16"], ["14", "28"], ["17"]],
 		"OrderMessage": ""
 	}, {
 		"Username": "Vampirekid",
 		"Password": "",
 		"gpioPins": ["12", "16", "22"],
-		"foodItemIdes": [["16"], ["14", "28"], ["17"]],
+		"foodItemIds": [["16"], ["14", "28"], ["17"]],
 		"OrderMessage": ""
 	}],
 	"food": {
