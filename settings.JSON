@@ -1,17 +1,20 @@
 {
-	"Users": [{
+	"Users": [
+		{
 		"Username": "Looney",
 		"Password": "",
 		"gpioPins": ["7", "11", "15"],
 		"foodItemIds": [["16"], ["14", "28"], ["17"]],
-		"OrderMessage": "Order Placed by the FoM Network Team Button stuff something IoT device."
-	}, {
+		"OrderMessage": "Order Placed by the FoM Network Team Butzzton stuff something IoT device."
+		}, 
+		{
 		"Username": "Vampirekid",
 		"Password": "",
 		"gpioPins": ["12", "16", "22"],
 		"foodItemIds": [["16"], ["14", "28"], ["17"]],
 		"OrderMessage": "Order Placed by the FoM Network Team Button stuff something IoT device."
-	}],
+		}
+	],
 	"food": {
 		"16": "Bicky",
 		"14": "PartyMix",
